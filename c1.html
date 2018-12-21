@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>C1</title>
+</head>
+<body>
+<p>
+    <b>Домашнее задание C1</b><br>
+    Переписать ДЗ A1 (подсчёт гласных букв в строке) без использования циклов, двумя способами:<br>
+    - с использованием метода массива forEach,<br>
+    - с использованием метода массива filter.<br>
+    <mark>После этой темы поняла, что задание А1 сделала неверно, поэтому сделала три решения через цикл и методами forEach, filter.</mark>
+</p>
+
+<script type="text/javascript">
+    "use strict";
+    function vowLet(str) {        //через цикл
+         str=str.toLowerCase();
+        let vLetter = "ауоыиэяюёе",
+        counter = 0;
+        for (let i=0; i<str.length; i++) {
+            if (vLetter.indexOf(str[i]) !== -1) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+    var str = prompt("Напишите строку: ");
+    console.log(vowLet(str));
+
+
+    function vowLetter(str) {        // через forEach
+        let counter= 0;
+        let strk=str.toLowerCase().split('');
+        function F(V,I,A){
+            let arr=["а", "е","ё", "и", "о", "у", "ы", "э", "ю", "я"];
+            if(arr.indexOf(V)!==-1) {
+                counter++;
+            }
+        }
+        strk.forEach(F);
+        return counter;
+    }
+    console.log(vowLetter(prompt("Напишите строку для метода forEach: ")));
+
+    function FiltVow(str){                       //через filter
+        let stroka=str.toLowerCase().split('');
+        function FF(V,I,A){
+            let mass=["а", "у","о", "ы", "и", "э", "я", "ю", "ё", "е"];
+            return mass.indexOf(V)!=-1;
+        }
+        return stroka.filter(FF).length;
+    }
+    console.log(FiltVow(prompt("Напишите строку для метода filter: ")));
+</script>
+</body>
+</html>
